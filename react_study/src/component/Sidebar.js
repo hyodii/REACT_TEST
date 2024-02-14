@@ -19,7 +19,7 @@ function Sidebar({numberStat, onClick}) {
         return (
           <ul key={menu.id}>
             <li className='no_dot'>
-              <a onClick={() => {handleClickButton(menu.id)}} >{menu.name}</a>
+              <a onClick={() => {handleClickButton(menu.id); onClick(menu.id)}} >{menu.name}</a>
             </li>
           </ul>
         );
