@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import ToggleSwitch from "./ToggleSwitch";
 
-function Header({darkState, onClick}) {
+function Header({darkstate, onClick}) {
 
   const [isDarkMode, setDarkMode] = useState(false);
 
   const handleClickButton = (isDarkMode) => {
-    isDarkMode(!isDarkMode);
+    setDarkMode(!isDarkMode);
+    console.log("isDarkMode--자식입니다-->", isDarkMode)
   }
 
   return (
@@ -21,13 +22,13 @@ function Header({darkState, onClick}) {
           backgroundColor: isDarkMode ? "black" : "white",
           color : isDarkMode ? "white" : "black"
         }}
-        onClick={() => {setDarkMode((isDarkMode) => !isDarkMode); onClick()}}
+        onClick={() => {handleClickButton(isDarkMode); onClick()}}
       >
         {isDarkMode ? "다크모드 비활성화" : "다크모드 활성화"}
       </button>
     </div>
   );
-};
+}
 
 export default Header;
 
