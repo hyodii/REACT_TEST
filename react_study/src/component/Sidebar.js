@@ -21,6 +21,7 @@ function Sidebar({numberstate, onClick}) {
 
   return (
     <div>
+      <h1>대시보드</h1>
       {menus.map((menu) => {
         return (
           <ul key={menu.depth1}>

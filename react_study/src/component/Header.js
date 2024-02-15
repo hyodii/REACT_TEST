@@ -12,8 +12,7 @@ function Header({darkstate, onClick}) {
 
   return (
     <div className='header'>
-      <h1>대시보드</h1>
-      <ToggleSwitch label="토글토글"/>
+      {/*<ToggleSwitch label="토글토글"/>*/}
       <button
         style={{
           border: "1px solid black",

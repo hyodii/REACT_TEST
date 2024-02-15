@@ -12,87 +12,10 @@ code {
     monospace;
 }
 
-.header {
-    background: rgba(0, 0, 0, 0.5);
-    place-items: center;
-    display: grid;
-    padding: 1rem 1.5rem;
-}
-
-.footer {
-    background: rgba(0, 0, 0, 0.5);
-    place-items: center;
-    display: grid;
-    padding: 1rem 1.5rem;
-    position: absolute;
-    bottom: 0;
-}
-
-/*.sidebar {*/
-/*    position: sticky;*/
-/*    top: 200px;*/
-/*    width: 10.5rem;*/
-/*    height: 100%;*/
-/*    padding: 30px;*/
-/*}*/
-
-/*.no_dot {*/
-/*    list-style-type: none;*/
-/*    margin-top: 10px;*/
-/*}*/
-
 .toggle {
     border: none;
     padding: 20px;
     color: white;
     background-color: green;
     border-radius: 30px;
-}
-
-.page1 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page2 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page3 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page4 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page5 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page6 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page7 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
-}
-
-.page8 {
-    position: absolute;
-    left: 210px;
-    top: 183px;
 }

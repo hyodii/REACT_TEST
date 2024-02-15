@@ -14,23 +14,44 @@ import Sidebar from "./component/Sidebar";
 import styled from "styled-components";
 
 const Style = {
+  Header: styled.div`
+    place-items: end;
+    display: grid;
+    padding: 1rem 1.5rem;
+  `,
   Sidebar: styled.div`
-    background-color: pink;
-    color: black;
-    font-size: 18px;
+    background-color: black;
+    color: white;
+    font-size: 15px;
     font-weight: bold;
-    position: sticky;
-    top: 200px;
+    position: absolute;
+    top: 0px;
     width: 8rem;
-    height: 100%;
+    height: 93%;
     padding: 30px;
+    text-align: center;
     ul {
-    padding: 5px;
-    }
+        padding: 5px;
+        }
     .no_dot {
-    list-style-type: none;
-    margin-top: 10px;
-}
+            list-style-type: none;
+            margin-top: 10px;
+            }
+    border-radius: 10px
+  `,
+  Page: styled.div`
+    position: absolute;
+    left: 230px;
+    top: 88px;
+  `,
+  Footer: styled.div`
+    place-items: center;
+    display: grid;
+    padding: 1rem 1.5rem;
+    position: absolute;
+    bottom: 0;
+    width: 97%;
+    font-style: italic;
   `
 }
 
@@ -71,16 +92,18 @@ function App() {
 
   return (
     <div>
-      <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
-      <div>
-        <Style.Sidebar>
-          <Sidebar $numberstate={number} onClick={changeNumber}></Sidebar>
-        </Style.Sidebar>
-        <div>
-          {depth1(number)}
-        </div>
-      </div>
-      <Footer></Footer>
+      <Style.Header>
+        <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
+      </Style.Header>
+      <Style.Sidebar>
+        <Sidebar $numberstate={number} onClick={changeNumber}></Sidebar>
+      </Style.Sidebar>
+      <Style.Page>
+        {depth1(number)}
+      </Style.Page>
+      <Style.Footer>
+        <Footer></Footer>
+      </Style.Footer>
     </div>
   );
 }
