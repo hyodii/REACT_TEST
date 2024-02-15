@@ -28,8 +28,9 @@ const Style = {
     top: 0px;
     width: 8rem;
     height: 93%;
+    // height: 100vh; 이거되도록 부모 엘리먼트 설정해야함
     padding: 30px;
-    text-align: center;
+    text-align: left;
     ul {
         padding: 5px;
         }
