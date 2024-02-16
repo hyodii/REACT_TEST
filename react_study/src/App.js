@@ -33,11 +33,53 @@ const Style = {
     text-align: left;
     ul {
         padding: 5px;
+        text-decoration-line: none;
         }
-    .no_dot {
-            list-style-type: none;
-            margin-top: 10px;
-            }
+    .depth1 {
+        list-style-type: none;
+        margin-top: 10px;
+        color: #818181;
+        }
+    .depth1 a {
+      text-decoration: none;
+      color: #818181;
+    }
+    .depth1:hover {
+      color: white;
+    }
+    .depth1 a:hover {
+      color: white;
+      .depth2 a {
+      }
+    }
+    .depth22 {
+      display: none;
+    }
+    .depth11 > li:hover > ul {
+      display: block;
+      position: absolute;
+      background-color: #888;
+      border-radius: 10px;
+      place-items: center;
+      top: 0px;         /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
+      left: 100%;     /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
+      width: 100%;    /* 1차 메뉴의 너비를 상속 */
+    }
+    .depth11 > li {
+      position: relative;
+    }
+    .depth2 {
+        list-style-type: none;
+        margin-top: 10px;
+        color: black;
+        }
+    .depth11 > li:hover > ul a {
+      text-decoration: none;
+      color: black;
+    }
+    .depth2:hover {
+      color: white;
+    }
     border-radius: 10px
   `,
   Page: styled.div`
