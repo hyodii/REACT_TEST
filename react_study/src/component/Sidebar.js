@@ -6,13 +6,13 @@ import { FaConnectdevelop, FaUser } from "react-icons/fa";
 import { CiRoute } from "react-icons/ci";
 import { FiChevronRight } from "react-icons/fi";
 
-function Sidebar({numberstate, onClick}) {
+function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
   const menus = [
     { depth1: 0, name: "서비스 목록", icon: <FaList />,
       menus: [
-          {depth2:0, name: "서비스 목록-1", icon: <FiChevronRight />}
-        , {depth2:1, name: "서비스 목록-2", icon: <FiChevronRight />}
-        , {depth2:2, name: "서비스 목록-3", icon: <FiChevronRight />}
+          {depth1:0, depth2:0, name: "서비스 목록-1", icon: <FiChevronRight />}
+        , {depth1:0, depth2:1, name: "서비스 목록-2", icon: <FiChevronRight />}
+        , {depth1:0, depth2:2, name: "서비스 목록-3", icon: <FiChevronRight />}
       ]
     },
     { depth1: 1, name: "서비스 정보 관리", icon: <MdDesignServices />,
@@ -71,6 +71,13 @@ function Sidebar({numberstate, onClick}) {
     setNumber(number);
     console.log("number--자식입니다-->", number)
   }
+  let [number2, setNumber2] = useState(0);
+  const handleClickButton2 = (number2, number) => {
+    setNumber2(number2);
+    setNumber(number);
+    console.log("number2--자식입니다!-->", number2)
+    console.log("number--자식입니다!-->", number2)
+  }
 
   return (
     <div>
@@ -82,12 +89,12 @@ function Sidebar({numberstate, onClick}) {
             <li className='depth1'>
               {menu.icon}
               <a href="#" onClick={() => {handleClickButton(menu.depth1); onClick(menu.depth1)}} >{' ' + menu.name}</a>
-                <ul key={menu.depth1} className='depth22'>
+                <ul className='ulDepth2'>
                   {menu.menus.map((depth2Menu) => {
                     return (
-                    <li className='depth2'>
+                    <li className='liDepth2' key={depth2Menu.depth2}>
                       {depth2Menu.icon}
-                      <a href="#" onClick={() => {handleClickButton(depth2Menu.depth2); onClick(depth2Menu.depth2)}} >{' ' + depth2Menu.name}</a>
+                      <a href="#" onClick={() => {handleClickButton2(depth2Menu.depth2, depth2Menu.depth1); onClick2(depth2Menu.depth2, depth2Menu.depth1)}} >{' ' + depth2Menu.name}</a>
                     </li>
                           )
                     })

@@ -12,6 +12,8 @@ import Page7 from "./component/Page7";
 import Page8 from "./component/Page8";
 import Sidebar from "./component/Sidebar";
 import styled from "styled-components";
+import Page1_2 from "./component/Page1_2";
+import Page1_3 from "./component/Page1_3";
 
 const Style = {
   Header: styled.div`
@@ -112,17 +114,29 @@ function App() {
       사이드바 상태
    */
   const [number, setNumber] = useState(0);
+  const [number2, setNumber2] = useState(0);
   const changeNumber = (number) => {
     setNumber(number)
+    console.log("number--부모 변했나요?--->", number)
+  }
+  const changeNumber2 = (number2, number) => {
+    setNumber2(number2)
+    setNumber(number)
+    console.log("number2--부모 변했나요?--->", number2)
     console.log("number--부모 변했나요?--->", number)
   }
 
   /*
       사이드바 depth1
    */
-  const depth1 = (number => {
+  const depth1 = ((number, number2) => {
     switch(number) {
-    case 0: return <Page1/>
+    case 0: switch(number2) {
+      case 0: return <Page1/>
+      case 1: return <Page1_2/>
+      case 2: return <Page1_3/>
+    }
+    break;
     case 1: return <Page2/>
     case 2: return <Page3/>
     case 3: return <Page4/>
@@ -133,16 +147,32 @@ function App() {
     }
   })
 
+  /*
+      사이드바 depth2
+   */
+  const depth2 = ( (number2) => {
+    switch(number2) {
+      case 0: return <Page1/>
+      case 1: return <Page2/>
+      case 2: return <Page3/>
+      case 3: return <Page4/>
+      case 4: return <Page5/>
+      case 5: return <Page6/>
+      case 6: return <Page7/>
+      case 7: return <Page8/>
+    }
+  })
+
   return (
     <div>
       <Style.Header>
         <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
       </Style.Header>
       <Style.Sidebar>
-        <Sidebar $numberstate={number} onClick={changeNumber}></Sidebar>
+        <Sidebar $numberstate={number} $numberstate2={number2} onClick={changeNumber} onClick2={changeNumber2}></Sidebar>
       </Style.Sidebar>
       <Style.Page>
-        {depth1(number)}
+        {depth1(number, number2)}
       </Style.Page>
       <Style.Footer>
         <Footer></Footer>
