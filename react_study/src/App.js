@@ -28,59 +28,49 @@ const Style = {
     font-weight: bold;
     position: absolute;
     top: 0px;
-    width: 8rem;
+    width: 10rem;
     height: 93%;
     // height: 100vh; 이거되도록 부모 엘리먼트 설정해야함
     padding: 30px;
     text-align: left;
+    .liIcon .IoMdArrowDropdown {
+      float: inline-end;
+    }
     ul {
         padding: 5px;
         text-decoration-line: none;
         }
-    .depth1 {
+    .liDepth1 {
         list-style-type: none;
         margin-top: 10px;
         color: #818181;
         }
-    .depth1 a {
+    .liDepth1 a {
       text-decoration: none;
       color: #818181;
     }
-    .depth1:hover {
+    .liDepth1:hover {
       color: white;
     }
-    .depth1 a:hover {
+    .liDepth1 a:hover {
       color: white;
-      .depth2 a {
-      }
     }
-    .depth22 {
-      display: none;
+    .liDepth2 {
+        list-style-type: none;
     }
-    .depth11 > li:hover > ul {
-      display: block;
-      position: absolute;
-      background-color: #888;
-      border-radius: 10px;
-      place-items: center;
-      top: 0px;         /* 2차 메뉴의 상단을 1차 메뉴의 상단에 고정 */
-      left: 100%;     /* 2차 메뉴를 1차 메뉴의 너비만큼 이동 */
-      width: 100%;    /* 1차 메뉴의 너비를 상속 */
-    }
-    .depth11 > li {
-      position: relative;
-    }
-    .depth2 {
+    .liDepth2 a {
+        text-decoration: none;
         list-style-type: none;
         margin-top: 10px;
-        color: black;
         }
-    .depth11 > li:hover > ul a {
-      text-decoration: none;
-      color: black;
-    }
-    .depth2:hover {
+    .liDepth2:hover {
       color: white;
+    }
+    .ulDepth2 {
+      display: none;
+    }
+    .ulDepth2.on {
+      display: block;
     }
     border-radius: 10px
   `,
@@ -190,7 +180,9 @@ export default App;
 3. Header 컴포넌트에서 고대비 설정 버튼을 클릭 시 App 컴포넌트의 상태값을 변경해야 된다.
 4. App 컴포넌트에서 변경된 상태값은 모든 하위 컴포넌트에 전파해줘야 된다.
 [미션 2]
-- Sidebar 연결하기
+- Sidebar 연결하기.
 [미션 3]
 - css, scss 말고 styled-component를 활용하여!!사이드바 메뉴 스타일을 한번 꾸며보시지요.
+[미션 4]
+- Sidebar를 TREE형태로 변경하기.
 */
