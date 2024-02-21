@@ -72,6 +72,9 @@ const Style = {
     .ulDepth2.on {
       display: block;
     }
+    .ulDepth2.on:after {
+      display: block;
+    }
     border-radius: 10px
   `,
   Page: styled.div`

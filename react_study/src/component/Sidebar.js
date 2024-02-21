@@ -5,7 +5,7 @@ import { MdDesignServices, MdEmojiEvents, MdEventNote, MdLeaderboard } from "rea
 import { FaConnectdevelop, FaUser } from "react-icons/fa";
 import { CiRoute } from "react-icons/ci";
 import { FiChevronRight } from "react-icons/fi";
-import { BiSolidDownArrow, BiSolidUpArrow } from "react-icons/bi";
+import { BiSolidDownArrow } from "react-icons/bi";
 
 function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
   const menus = [
@@ -92,24 +92,15 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
    */
   const [isOpen, setOpen] = useState(true);
   const handleClickDropDown = (isOpen, index) => {
-    console.log("index====>", index)
-    console.log("isOpen the door~~set 전~~~-->", isOpen)
     const dropdown = document.getElementsByClassName('ulDepth2')
     if(isOpen) {
-      console.log("true다", isOpen)
-      // document.getElementsByClassName('liIcon')[index].remove( `<BiSolidDownArrow className='IoMdArrowDropdown' />` )
-      // document.querySelector('.liIcon')[index].innerHTML = <BiSolidUpArrow className='IoMdArrowDropdown' />
+      document.getElementsByClassName('ulDepth1 ')[index].firstChild.firstChild.lastElementChild.style.transform = "scaleY(-1)"
       dropdown[index].classList.add('on')
-      // const dropdownButton = <BiSolidUpArrow className='IoMdArrowDropdown' />
     } else {
-      console.log("false다", isOpen)
-      // document.getElementsByClassName('liIcon')[index].remove( `<BiSolidUpArrow className='IoMdArrowDropdown' />` )
-      // document.getElementsByClassName('liIcon')[index].innerHTML += <BiSolidDownArrow className='IoMdArrowDropdown' />
+      document.getElementsByClassName('ulDepth1')[index].firstChild.firstChild.lastElementChild.style.transform = "scaleY(1)"
       dropdown[index].classList.remove('on')
-      // const dropdownButton = <BiSolidUpArrow className='IoMdArrowDropdown' />
     }
     setOpen(isOpen => !isOpen)
-    console.log("isOpen the door~~set 후~~~-->", !isOpen)
   }
 
   return (
@@ -122,22 +113,22 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
               <div className='liIcon'>
                 {menu.icon}
                 <a href="#" onClick={() => {handleClickButton(menu.depth1); onClick(menu.depth1)}} >{' ' + menu.name}</a>
-                {/*{isOpen ? <BiSolidUpArrow className='IoMdArrowDropdown' /> : <BiSolidDownArrow className='IoMdArrowDropdown' />}*/}
+                {menu.menus.length > 0 ? <BiSolidDownArrow className='IoMdArrowDropdown' /> : ''}
               </div>
-                <ul className='ulDepth2'>
-                  {menu.menus.map((depth2Menu) => {
-                    return (
-                          <li className='liDepth2' key={depth2Menu.depth2}>
-                            {depth2Menu.icon}
-                            <a href="#" onClick={() => {
-                              handleClickButton2(depth2Menu.depth2, depth2Menu.depth1);
-                              onClick2(depth2Menu.depth2, depth2Menu.depth1)
-                            }}>{' ' + depth2Menu.name}</a>
-                          </li>
-                           )
-                  })
-                  }
-                </ul>
+              <ul className='ulDepth2'>
+                {menu.menus.map((depth2Menu) => {
+                  return (
+                        <li className='liDepth2' key={depth2Menu.depth2}>
+                          {depth2Menu.icon}
+                          <a href="#" onClick={() => {
+                            handleClickButton2(depth2Menu.depth2, depth2Menu.depth1);
+                            onClick2(depth2Menu.depth2, depth2Menu.depth1)
+                          }}>{' ' + depth2Menu.name}</a>
+                        </li>
+                         )
+                })
+                }
+              </ul>
             </li>
           </ul>
         )
