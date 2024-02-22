@@ -6,4 +6,4 @@
 ### 다크모드 비활성화
 ![lightmode](https://github.com/hyodii/REACT_TEST/assets/87711421/607329da-5d8b-4ada-9d99-cdd8bc12497d)
 ### 다크모드 활성화
-![darkmode](https://github.com/hyodii/REACT_TEST/assets/87711421/4c36bf36-f9bf-43b0-b394-1c0e9cf185a0)
+![darkmode](https://github.com/hyodii/REACT_TEST/assets/87711421/d11c5596-190f-402f-9a45-72955fd993ff)
