@@ -73,7 +73,6 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
   const [number, setNumber] = useState(0);
   const handleClickButton = (number) => {
     setNumber(number);
-    console.log("number--자식입니다-->", number)
   }
 
   /*
@@ -83,8 +82,6 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
   const handleClickButton2 = (number2, number) => {
     setNumber2(number2);
     setNumber(number);
-    console.log("number2--자식입니다!-->", number2)
-    console.log("number--자식입니다!-->", number2)
   }
 
   /*

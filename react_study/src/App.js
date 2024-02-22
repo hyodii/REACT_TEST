@@ -11,7 +11,7 @@ import Page6 from "./component/Page6";
 import Page7 from "./component/Page7";
 import Page8 from "./component/Page8";
 import Sidebar from "./component/Sidebar";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import Page1_2 from "./component/Page1_2";
 import Page1_3 from "./component/Page1_3";
 
@@ -81,6 +81,9 @@ const Style = {
     position: absolute;
     left: 230px;
     top: 88px;
+    .page1 img {
+      height: 100vh;
+    }
   `,
   Footer: styled.div`
     place-items: center;
@@ -90,6 +93,12 @@ const Style = {
     bottom: 0;
     width: 97%;
     font-style: italic;
+  `,
+  ThemeProvider: styled.div`
+    width: 100%;
+    height: 100vh;
+    background-color: ${({theme}) => theme.bgColor};
+    color: ${({theme}) => theme.color};
   `
 }
 
@@ -100,7 +109,6 @@ function App() {
   const [isDarkMode, setDarkMode] = useState(false);
   const changeDark = () => {
     setDarkMode((isDarkMode) => !isDarkMode);
-    console.log("isDarkMode--부모 변했나요?--->", isDarkMode)
   }
 
   /*
@@ -110,13 +118,10 @@ function App() {
   const [number2, setNumber2] = useState(0);
   const changeNumber = (number) => {
     setNumber(number)
-    console.log("number--부모 변했나요?--->", number)
   }
   const changeNumber2 = (number2, number) => {
     setNumber2(number2)
     setNumber(number)
-    console.log("number2--부모 변했나요?--->", number2)
-    console.log("number--부모 변했나요?--->", number)
   }
 
   /*
@@ -156,26 +161,54 @@ function App() {
     }
   })
 
+  const darkTheme = {
+    color: 'white',
+    bgColor: 'gray',
+    containerColor: 'rgb(30,30,30)',
+    textAlign: 'flex-end',
+  };
+
+  const lightTheme = {
+    color: 'black',
+    containerColor: 'rgb(220,220,220)',
+    textAlign: 'flex-start',
+    bgColor: 'pink',
+  };
+
   return (
     <div>
-      <Style.Header>
-        <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
-      </Style.Header>
-      <Style.Sidebar>
-        <Sidebar $numberstate={number} $numberstate2={number2} onClick={changeNumber} onClick2={changeNumber2}></Sidebar>
-      </Style.Sidebar>
-      <Style.Page>
-        {depth1(number, number2)}
-      </Style.Page>
-      <Style.Footer>
-        <Footer></Footer>
-      </Style.Footer>
+      <Style.ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+        <Style.Header>
+          <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
+        </Style.Header>
+        <Style.Sidebar>
+          <Sidebar $numberstate={number} $numberstate2={number2} onClick={changeNumber} onClick2={changeNumber2}></Sidebar>
+        </Style.Sidebar>
+        <Style.Page>
+          {depth1(number, number2)}
+        </Style.Page>
+        <Style.Footer>
+          <Footer></Footer>
+        </Style.Footer>
+      </Style.ThemeProvider>
     </div>
   );
 }
 
 export default App;
+export const dark ={
+  colors:{
+    // titleColor : '#121212',
+    'background-color': '#b8b8b8',
+  }
+}
 
+export const light ={
+  colors:{
+    // titleColor : '#b8b8b8',
+    'background-color': '#121212',
+  }
+}
 /*
 [미션 1]
 1. Header 컴포넌트에 고대비 설정 버튼이 있다.(다크모드)

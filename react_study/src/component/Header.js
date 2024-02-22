@@ -7,7 +7,6 @@ function Header({darkstate, onClick}) {
 
   const handleClickButton = (isDarkMode) => {
     setDarkMode(!isDarkMode);
-    console.log("isDarkMode--자식입니다-->", isDarkMode)
   }
 
   return (
@@ -23,7 +22,7 @@ function Header({darkstate, onClick}) {
         }}
         onClick={() => {handleClickButton(isDarkMode); onClick()}}
       >
-        {isDarkMode ? "다크모드 비활성화" : "다크모드 활성화"}
+        {isDarkMode ? "다크모드 활성화" : "다크모드 비활성화"}
       </button>
     </div>
   );
