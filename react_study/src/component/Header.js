@@ -18,7 +18,7 @@ function Header({darkstate, onClick}) {
           padding: "10px 15px",
           borderRadius: "25px",
           backgroundColor: isDarkMode ? "black" : "white",
-          color : isDarkMode ? "white" : "black"
+          color : isDarkMode ? "white" : "dimgray"
         }}
         onClick={() => {handleClickButton(isDarkMode); onClick()}}
       >

@@ -22,15 +22,15 @@ const Style = {
     padding: 1rem 1.5rem;
   `,
   Sidebar: styled.div`
-    background-color: black;
-    color: white;
+    background-color: ${({theme}) => theme.sidebarBgColor};
+    color: ${({theme}) => theme.color};
     font-size: 15px;
     font-weight: bold;
     position: absolute;
     top: 0px;
     width: 10rem;
-    height: 93%;
-    // height: 100vh; 이거되도록 부모 엘리먼트 설정해야함
+    // height: 93%;
+    height: 100vh;
     padding: 30px;
     text-align: left;
     .liIcon .IoMdArrowDropdown {
@@ -43,11 +43,11 @@ const Style = {
     .liDepth1 {
         list-style-type: none;
         margin-top: 10px;
-        color: #818181;
+        color: ${({theme}) => theme.sidebarColor};
         }
     .liDepth1 a {
       text-decoration: none;
-      color: #818181;
+      color: ${({theme}) => theme.sidebarColor};
     }
     .liDepth1:hover {
       color: white;
@@ -163,6 +163,8 @@ function App() {
 
   const darkTheme = {
     color: 'white',
+    sidebarBgColor: 'black',
+    sidebarColor: 'darkgray',
     bgColor: 'gray',
     containerColor: 'rgb(30,30,30)',
     textAlign: 'flex-end',
@@ -170,9 +172,11 @@ function App() {
 
   const lightTheme = {
     color: 'black',
+    sidebarBgColor: 'lightskyblue',
+    sidebarColor: 'dimgray',
+    bgColor: 'aliceblue',
     containerColor: 'rgb(220,220,220)',
     textAlign: 'flex-start',
-    bgColor: 'pink',
   };
 
   return (
@@ -181,7 +185,7 @@ function App() {
         <Style.Header>
           <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
         </Style.Header>
-        <Style.Sidebar>
+        <Style.Sidebar theme={isDarkMode ? darkTheme : lightTheme}>
           <Sidebar $numberstate={number} $numberstate2={number2} onClick={changeNumber} onClick2={changeNumber2}></Sidebar>
         </Style.Sidebar>
         <Style.Page>
