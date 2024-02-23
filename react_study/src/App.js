@@ -200,19 +200,7 @@ function App() {
 }
 
 export default App;
-export const dark ={
-  colors:{
-    // titleColor : '#121212',
-    'background-color': '#b8b8b8',
-  }
-}
 
-export const light ={
-  colors:{
-    // titleColor : '#b8b8b8',
-    'background-color': '#121212',
-  }
-}
 /*
 [미션 1]
 1. Header 컴포넌트에 고대비 설정 버튼이 있다.(다크모드)
