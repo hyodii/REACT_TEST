@@ -166,8 +166,6 @@ function App() {
     sidebarBgColor: 'black',
     sidebarColor: 'darkgray',
     bgColor: 'gray',
-    containerColor: 'rgb(30,30,30)',
-    textAlign: 'flex-end',
   };
 
   const lightTheme = {
@@ -175,8 +173,6 @@ function App() {
     sidebarBgColor: 'lightskyblue',
     sidebarColor: 'dimgray',
     bgColor: 'aliceblue',
-    containerColor: 'rgb(220,220,220)',
-    textAlign: 'flex-start',
   };
 
   return (
