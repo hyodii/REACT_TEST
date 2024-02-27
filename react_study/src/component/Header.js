@@ -3,10 +3,15 @@ import ToggleSwitch from "./ToggleSwitch";
 
 function Header({darkstate, onClick}) {
 
-  const [isDarkMode, setDarkMode] = useState(false);
-
-  const handleClickButton = (isDarkMode) => {
-    setDarkMode(!isDarkMode);
+  darkstate ? localStorage.setItem("theme", "dark") : localStorage.setItem("theme", "light")
+  const [isDarkMode, setDarkMode] = useState(darkstate);
+  const handleClickButton = () => {
+    setDarkMode((isDarkMode) => !isDarkMode);
+    if(isDarkMode) {
+      localStorage.setItem("theme", "dark")
+    } else {
+      localStorage.setItem("theme", "light")
+    }
   }
 
   return (
@@ -22,7 +27,7 @@ function Header({darkstate, onClick}) {
         }}
         onClick={() => {handleClickButton(isDarkMode); onClick()}}
       >
-        {isDarkMode ? "다크모드 활성화" : "다크모드 비활성화"}
+        {isDarkMode ? "다크모드 비활성화" : "다크모드 활성화"}
       </button>
     </div>
   );

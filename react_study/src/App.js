@@ -102,13 +102,35 @@ const Style = {
   `
 }
 
+const darkTheme = {
+  color: 'white',
+  sidebarBgColor: 'black',
+  sidebarColor: 'darkgray',
+  bgColor: 'gray',
+};
+
+const lightTheme = {
+  color: 'black',
+  sidebarBgColor: 'lightskyblue',
+  sidebarColor: 'dimgray',
+  bgColor: 'aliceblue',
+};
+
 function App() {
   /*
       해더 다크모드 상태
    */
-  const [isDarkMode, setDarkMode] = useState(false);
+  let darkParam = false
+  if(localStorage.getItem('theme')) {
+    if(localStorage.getItem('theme') === 'dark') {
+      darkParam = true
+    } else {
+      darkParam = false
+    }
+  }
+  const [isDarkMode, setDarkMode] = useState(darkParam);
   const changeDark = () => {
-    setDarkMode((isDarkMode) => !isDarkMode);
+    setDarkMode((darkParam) => !darkParam);
   }
 
   /*
@@ -161,28 +183,14 @@ function App() {
     }
   })
 
-  const darkTheme = {
-    color: 'white',
-    sidebarBgColor: 'black',
-    sidebarColor: 'darkgray',
-    bgColor: 'gray',
-  };
-
-  const lightTheme = {
-    color: 'black',
-    sidebarBgColor: 'lightskyblue',
-    sidebarColor: 'dimgray',
-    bgColor: 'aliceblue',
-  };
-
   return (
     <div>
       <Style.ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
         <Style.Header>
-          <Header $darkstate={isDarkMode} onClick={changeDark}></Header>
+          <Header darkstate={isDarkMode} onClick={changeDark}></Header>
         </Style.Header>
         <Style.Sidebar theme={isDarkMode ? darkTheme : lightTheme}>
-          <Sidebar $numberstate={number} $numberstate2={number2} onClick={changeNumber} onClick2={changeNumber2}></Sidebar>
+          <Sidebar numberstate={number} numberstate2={number2} onClick={changeNumber} onClick2={changeNumber2}></Sidebar>
         </Style.Sidebar>
         <Style.Page>
           {depth1(number, number2)}
