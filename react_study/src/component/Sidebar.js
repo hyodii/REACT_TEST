@@ -102,7 +102,6 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
 
   return (
     <div>
-      <h1>대시보드</h1>
       {menus.map((menu, index) => {
         return (
           <ul key={menu.depth1} className='ulDepth1' onClick={() => handleClickDropDown(isOpen, index)}>

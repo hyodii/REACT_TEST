@@ -14,24 +14,35 @@ import Sidebar from "./component/Sidebar";
 import styled, { ThemeProvider } from "styled-components";
 import Page1_2 from "./component/Page1_2";
 import Page1_3 from "./component/Page1_3";
+import './App.css';
 
 const Style = {
   Header: styled.div`
     place-items: end;
     display: grid;
     padding: 1rem 1.5rem;
+    .header button {
+      border: 1px solid ${({theme}) => theme.buttonBorder};
+      padding: 10px 15px;
+      border-radius: 25px;
+      background-color: ${({theme}) => theme.buttonBgColor};
+      color: ${({theme}) => theme.buttonTextColor};
+      font-family: MaruBuri-Bold;
+    }
   `,
   Sidebar: styled.div`
     background-color: ${({theme}) => theme.sidebarBgColor};
     color: ${({theme}) => theme.color};
     font-size: 15px;
-    font-weight: bold;
+    font-weight: bolder;
+    font-family: NanumSquareNeoBold;
     position: absolute;
     top: 0px;
     width: 10rem;
     // height: 93%;
     height: 100vh;
     padding: 30px;
+    padding-top: 65px;
     text-align: left;
     .liIcon .IoMdArrowDropdown {
       float: inline-end;
@@ -48,6 +59,7 @@ const Style = {
     .liDepth1 a {
       text-decoration: none;
       color: ${({theme}) => theme.sidebarColor};
+      font-weight: bold;
     }
     .liDepth1:hover {
       color: white;
@@ -75,14 +87,13 @@ const Style = {
     .ulDepth2.on:after {
       display: block;
     }
-    border-radius: 10px
   `,
   Page: styled.div`
     position: absolute;
     left: 230px;
     top: 88px;
     .page1 img {
-      height: 100vh;
+      width: 170vh;
     }
   `,
   Footer: styled.div`
@@ -107,13 +118,19 @@ const darkTheme = {
   sidebarBgColor: 'black',
   sidebarColor: 'darkgray',
   bgColor: 'gray',
+  buttonBgColor: 'black',
+  buttonTextColor: 'white',
+  buttonBorder: 'black'
 };
 
 const lightTheme = {
   color: 'black',
-  sidebarBgColor: 'lightskyblue',
-  sidebarColor: 'dimgray',
-  bgColor: 'aliceblue',
+  sidebarBgColor: '#5e76cc',
+  sidebarColor: 'white',
+  bgColor: 'jumbotron',
+  buttonBgColor: 'white',
+  buttonTextColor: '#5e76cc',
+  buttonBorder: '#5e76cc'
 };
 
 function App() {
@@ -186,7 +203,7 @@ function App() {
   return (
     <div>
       <Style.ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
-        <Style.Header>
+        <Style.Header theme={isDarkMode ? darkTheme : lightTheme}>
           <Header darkstate={isDarkMode} onClick={changeDark}></Header>
         </Style.Header>
         <Style.Sidebar theme={isDarkMode ? darkTheme : lightTheme}>
@@ -222,4 +239,6 @@ export default App;
 - css, scss 말고 styled-component를 활용하여!!사이드바 메뉴 스타일을 한번 꾸며보시지요.
 [미션 4]
 - Sidebar를 TREE형태로 변경하기.
+[미션 5]
+- 새로고침시에도 다크모드 유지하기.
 */

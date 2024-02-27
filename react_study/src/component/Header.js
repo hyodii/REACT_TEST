@@ -17,16 +17,7 @@ function Header({darkstate, onClick}) {
   return (
     <div className='header'>
       {/*<ToggleSwitch label="토글토글"/>*/}
-      <button
-        style={{
-          border: "1px solid black",
-          padding: "10px 15px",
-          borderRadius: "25px",
-          backgroundColor: isDarkMode ? "black" : "white",
-          color : isDarkMode ? "white" : "dimgray"
-        }}
-        onClick={() => {handleClickButton(isDarkMode); onClick()}}
-      >
+      <button onClick={() => {handleClickButton(isDarkMode); onClick()}}>
         {isDarkMode ? "다크모드 비활성화" : "다크모드 활성화"}
       </button>
     </div>
