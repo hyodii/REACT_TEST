@@ -6,6 +6,7 @@ import { FaConnectdevelop, FaUser } from "react-icons/fa";
 import { CiRoute } from "react-icons/ci";
 import { FiChevronRight } from "react-icons/fi";
 import { BiSolidDownArrow } from "react-icons/bi";
+import DropdownMenu from "./DropdownMenu";
 
 function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
   const menus = [
@@ -84,6 +85,7 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
     setNumber(number);
   }
 
+
   /*
     .ulDepth2 상태 - dropdown
    */
@@ -102,6 +104,7 @@ function Sidebar({numberstate, numberstate2, onClick, onClick2}) {
 
   return (
     <div>
+      <DropdownMenu />
       {menus.map((menu, index) => {
         return (
           <ul key={menu.depth1} className='ulDepth1' onClick={() => handleClickDropDown(isOpen, index)}>

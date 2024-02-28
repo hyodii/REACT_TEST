@@ -44,6 +44,46 @@ const Style = {
     padding: 30px;
     padding-top: 65px;
     text-align: left;
+    .dropdownButton {
+      text-align: center;
+      height: 3rem;
+      width: 10rem;
+      border-radius: 7px;
+      background-color: ${({theme}) => theme.buttonColor};
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      font-family: NanumSquareNeoBold;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .dropdownButton.active .slarrowdown  {
+        transform: scaleY(-1);
+      }
+    .dropdownButton:hover {
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+    }
+    .dropdown ul li {
+      list-style-type: none;
+      color: black;
+      padding: 10px;
+    }
+    .dropdown .menu {
+      background-color: ${({theme}) => theme.buttonColor};
+      border-radius: 8px;
+      position: absolute;
+      top: 100px;
+      right: 30px;
+      width: 150px;
+      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+      opacity: 1;
+      visibility: hidden;
+      transform: translateY(-20px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+    .dropdown .menu.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
     .liIcon .IoMdArrowDropdown {
       float: inline-end;
     }
@@ -120,7 +160,9 @@ const darkTheme = {
   bgColor: 'gray',
   buttonBgColor: 'black',
   buttonTextColor: 'white',
-  buttonBorder: 'black'
+  buttonBorder: 'black',
+  buttonColor: 'darkgray',
+  menuBgColor: 'darkgray'
 };
 
 const lightTheme = {
@@ -130,7 +172,9 @@ const lightTheme = {
   bgColor: 'jumbotron',
   buttonBgColor: 'white',
   buttonTextColor: '#5e76cc',
-  buttonBorder: '#5e76cc'
+  buttonBorder: '#5e76cc',
+  buttonColor: 'white',
+  menuBgColor: 'white'
 };
 
 function App() {
