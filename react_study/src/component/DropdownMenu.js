@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
-import { BiSolidDownArrow } from "react-icons/bi";
 import { SlArrowDown } from "react-icons/sl";
+import { useDetectProjectOutsideClick } from "./useDetectProjectOutsideClick";
 
 const options = [
   { value: "project1", name: "project1" },
@@ -9,23 +9,20 @@ const options = [
 ]
 
 const DropdownMenu = () => {
-  // const dropdownRef = useRef(null)
-  // const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false)
-  const [isActive, setIsActive] = useState(false)
+  const dropdownRef = useRef(null)
+  const [isActive, setIsActive] = useDetectProjectOutsideClick(dropdownRef, false)
   const onClick = () => setIsActive(!isActive)
 
   return (
           <div className='dropdown'>
-            {/*<dropdownbutton onClick={} ref={}>*/}
-            <button className={`dropdownButton ${isActive ? "active" : "inactive"}`} onClick={onClick}>
+            <button className={`dropdownButton ${isActive ? "active" : "inactive"}`} onClick={onClick} ref={dropdownRef}>
               프로젝트를 선택해주세요
               <SlArrowDown className='slarrowdown' />
             </button>
-            {/*<menu isDropped={}>*/}
               <ul className={`menu ${isActive ? "active" : "inactive"}`}>
               {options.map((option) => {
                 return (
-                          <li value={option.value}>{option.name}</li>
+                          <li key={option.value}>{option.name}</li>
                        )
               })}
               </ul>

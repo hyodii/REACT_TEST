@@ -1,5 +1,4 @@
-import { useState } from "react";
-import React from "react";
+import React, { useState } from "react";
 import { FaList } from "react-icons/fa6";
 import { MdDesignServices, MdEmojiEvents, MdEventNote, MdLeaderboard } from "react-icons/md";
 import { FaConnectdevelop, FaUser } from "react-icons/fa";
